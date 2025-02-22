@@ -80,6 +80,7 @@ h2 {
 }
 .button:hover {
   background-color: #00ff00;
+  font-weight: bold;
   color: black;
 }
 
