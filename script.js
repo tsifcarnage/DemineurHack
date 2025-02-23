@@ -4,6 +4,26 @@ let wires = [];
 let gameOver = false;
 let cutSafeWires = 0;
 
+//empeche dafficher F12
+(function () {
+  let disabled = true; // Active la protection
+  let realConsoleLog = console.log;
+
+  console.log = function () {
+    if (!disabled) realConsoleLog.apply(console, arguments);
+  };
+
+  // Désactive F12 et le clic droit
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+})();
 function initGame() {
   gameOver = false;
   cutSafeWires = 0;
