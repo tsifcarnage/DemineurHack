@@ -68,6 +68,11 @@ function cutWire() {
     this.classList.add("bomb");
     document.getElementById("message").textContent =
       "💥 BOOM ! Mauvais fil coupé ! GAME OVER.";
+
+    // 🔊 Joue le son d'explosion
+    let explosionSound = document.getElementById("explosionSound");
+    explosionSound.currentTime = 4.5;
+    explosionSound.play();
     gameOver = true;
   } else {
     this.classList.add("safe");
@@ -81,6 +86,8 @@ function cutWire() {
 }
 
 function restartGame() {
+  explosionSound.pause();
+  explosionSound.currentTime = 4.5;
   initGame();
 }
 
